@@ -961,6 +961,40 @@ footer {
 }
 
 /* ═══════════════════════════════════════════════════════
+   COMING SOON BLOCK
+═══════════════════════════════════════════════════════ */
+.coming-soon-block {
+  padding: 5rem 0 3rem;
+}
+.csb-inner {
+  max-width: 560px; margin: 0 auto;
+  text-align: center;
+  border: 1px solid var(--border);
+  padding: 4rem 3rem;
+  background: rgba(13,31,16,0.15);
+  position: relative;
+}
+.csb-inner::before, .csb-inner::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: var(--or-faint);
+  border-style: solid;
+}
+.csb-inner::before { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+.csb-inner::after  { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+.csb-label {
+  font-family: var(--font-title);
+  font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--or-faint); display: block; margin-bottom: 1.25rem;
+}
+.csb-text {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1rem; color: var(--text-muted);
+  line-height: 1.85;
+}
+
+/* ═══════════════════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════════════════ */
 @keyframes fadeUp {
@@ -1057,16 +1091,31 @@ footer {
   <div class="hero-ornament"></div>
 
   <!-- Blason décoratif en arrière-plan -->
-  <svg class="hero-blason" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M150 8 L8 55 L8 190 C8 272 72 340 150 355 C228 340 292 272 292 190 L292 55 Z" stroke="#c9a84c" stroke-width="2" fill="rgba(26,58,31,0.3)"/>
-    <path d="M150 8 L150 355" stroke="#c9a84c" stroke-width="0.5"/>
-    <path d="M8 120 L292 120" stroke="#c9a84c" stroke-width="0.5"/>
-    <path d="M55 80 Q85 65 115 80 Q135 95 150 80 Q165 65 185 80 Q215 65 245 80" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-    <path d="M55 155 Q85 140 115 155 Q135 170 150 155 Q165 140 185 155 Q215 140 245 155" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-    <path d="M55 230 Q85 215 115 230 Q135 245 150 230 Q165 215 185 230 Q215 215 245 230" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-    <rect x="125" y="95" width="50" height="50" stroke="#c9a84c" stroke-width="1.2" fill="none" transform="rotate(45 150 120)"/>
-    <circle cx="150" cy="120" r="15" stroke="#c9a84c" stroke-width="0.8" fill="none"/>
-    <text x="150" y="315" text-anchor="middle" font-family="Cinzel" font-size="11" fill="#c9a84c" letter-spacing="6">TOUJOURS LOYAL</text>
+  <svg class="hero-blason" viewBox="0 0 300 370" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <clipPath id="hc">
+        <path d="M150 6 L20 6 L20 207 C20 282 75 333 150 352 C225 333 280 282 280 207 L280 6 Z"/>
+      </clipPath>
+    </defs>
+    <!-- Fond sinople transparent -->
+    <path d="M150 6 L20 6 L20 207 C20 282 75 333 150 352 C225 333 280 282 280 207 L280 6 Z"
+      fill="rgba(45,122,53,0.18)"/>
+    <!-- Chevron argent -->
+    <polygon points="150,162 38,236 38,257 150,183 262,257 262,236" fill="rgba(232,228,216,0.22)" clip-path="url(#hc)"/>
+    <!-- Rustre haut-gauche -->
+    <polygon points="90,52 120,87 90,122 60,87" fill="none" stroke="rgba(232,228,216,0.3)" stroke-width="1.5"/>
+    <circle cx="90" cy="87" r="16" fill="none" stroke="rgba(232,228,216,0.2)" stroke-width="1"/>
+    <!-- Rustre haut-droit -->
+    <polygon points="210,52 240,87 210,122 180,87" fill="none" stroke="rgba(232,228,216,0.3)" stroke-width="1.5"/>
+    <circle cx="210" cy="87" r="16" fill="none" stroke="rgba(232,228,216,0.2)" stroke-width="1"/>
+    <!-- Rustre bas-centre -->
+    <polygon points="150,222 180,257 150,292 120,257" fill="none" stroke="rgba(232,228,216,0.3)" stroke-width="1.5"/>
+    <circle cx="150" cy="257" r="16" fill="none" stroke="rgba(232,228,216,0.2)" stroke-width="1"/>
+    <!-- Contour écu -->
+    <path d="M150 6 L20 6 L20 207 C20 282 75 333 150 352 C225 333 280 282 280 207 L280 6 Z"
+      fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="1.5"/>
+    <!-- Devise -->
+    <text x="150" y="368" text-anchor="middle" font-family="Cinzel" font-size="11" fill="rgba(201,168,76,0.4)" letter-spacing="5">TOUJOURS LOYAL</text>
   </svg>
 
   <div class="hero-content">
@@ -1083,7 +1132,7 @@ footer {
     <p class="hero-tagline">« Une lignée enracinée dans les terres du Nord, gardienne d'une mémoire séculaire. »</p>
     <div class="hero-cta-group">
       <a href="#histoire" class="btn-primary">Découvrir l'Histoire</a>
-      <a href="#chronologie" class="btn-ghost">Chronologie</a>
+      <a href="#ancetres" class="btn-ghost">Figures de la Maison</a>
     </div>
   </div>
   <div class="hero-scroll" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
@@ -1177,23 +1226,27 @@ footer {
 
       <div class="histoire-aside reveal reveal-delay-2">
         <div class="blason-frame">
-          <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" width="160" style="margin:0 auto; display:block">
-            <!-- Shield shape -->
-            <path d="M100 5 L5 40 L5 130 C5 180 45 220 100 235 C155 220 195 180 195 130 L195 40 Z"
-              fill="rgba(26,58,31,0.5)" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Partition line -->
-            <path d="M100 5 L100 235" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
-            <!-- Chevron -->
-            <path d="M30 140 L100 80 L170 140" stroke="#c9a84c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Rustres (losanges percés) -->
-            <rect x="82" y="100" width="20" height="20" fill="none" stroke="#c9a84c" stroke-width="1.2" transform="rotate(45 92 110)"/>
-            <circle cx="92" cy="110" r="4" fill="none" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="47" y="150" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="1.2" transform="rotate(45 56 159)"/>
-            <circle cx="56" cy="159" r="3.5" fill="none" stroke="#c9a84c" stroke-width="0.9"/>
-            <rect x="117" y="150" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="1.2" transform="rotate(45 126 159)"/>
-            <circle cx="126" cy="159" r="3.5" fill="none" stroke="#c9a84c" stroke-width="0.9"/>
-            <!-- Base ornament -->
-            <path d="M40 195 Q100 210 160 195" stroke="#c9a84c" stroke-width="0.7" fill="none" opacity="0.5"/>
+          <svg viewBox="0 0 200 245" fill="none" xmlns="http://www.w3.org/2000/svg" width="160" style="margin:0 auto; display:block">
+            <defs>
+              <clipPath id="sc">
+                <path d="M100 4 L14 4 L14 138 C14 188 50 222 100 234 C150 222 186 188 186 138 L186 4 Z"/>
+              </clipPath>
+            </defs>
+            <!-- Fond sinople -->
+            <path d="M100 4 L14 4 L14 138 C14 188 50 222 100 234 C150 222 186 188 186 138 L186 4 Z" fill="#2d7a35"/>
+            <!-- Chevron argent — épais, position basse comme le vrai blason -->
+            <polygon points="100,108 28,158 28,172 100,122 172,172 172,158" fill="#e8e4d8" clip-path="url(#sc)"/>
+            <!-- Rustre haut-gauche -->
+            <polygon points="60,34 80,58 60,82 40,58" fill="#e8e4d8"/>
+            <circle cx="60" cy="58" r="11" fill="#2d7a35"/>
+            <!-- Rustre haut-droit -->
+            <polygon points="140,34 160,58 140,82 120,58" fill="#e8e4d8"/>
+            <circle cx="140" cy="58" r="11" fill="#2d7a35"/>
+            <!-- Rustre bas-centre -->
+            <polygon points="100,148 120,172 100,196 80,172" fill="#e8e4d8"/>
+            <circle cx="100" cy="172" r="11" fill="#2d7a35"/>
+            <!-- Contour écu -->
+            <path d="M100 4 L14 4 L14 138 C14 188 50 222 100 234 C150 222 186 188 186 138 L186 4 Z" fill="none" stroke="#0c0e0b" stroke-width="2.5"/>
           </svg>
           <p class="blason-title">Armes des Du Wicquet</p>
           <p class="blason-desc">
@@ -1227,123 +1280,14 @@ footer {
         <div class="rule-diamond"></div>
         <div class="rule-line"></div>
       </div>
-      <p class="section-lead">
-        Une traversée des siècles, jalonnée de figures marquantes et d'événements
-        qui ont façonné l'identité dynastique de la Maison du Wicquet.
-      </p>
     </header>
-
-    <div class="timeline">
-      <div class="tl-era-marker reveal">
-        <span class="tl-era-text">Période Médiévale · XIII<sup>e</sup>–XIV<sup>e</sup> siècles</span>
-      </div>
-
-      <div class="timeline-item left reveal">
-        <div class="tl-content">
-          <h4>Hugues du Wicquet</h4>
-          <p>Première mention documentée dans les actes relatifs aux terres du Hainaut. Ancêtre éponyme fondateur de la lignée telle qu'elle est connue à ce jour.</p>
-        </div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">1281</span>
-        </div>
-        <div class="tl-empty"></div>
-      </div>
-
-      <div class="timeline-item right reveal">
-        <div class="tl-empty"></div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">c. 1320</span>
-        </div>
-        <div class="tl-content">
-          <h4>Consolidation territoriale</h4>
-          <p>La famille s'affirme dans les structures administratives locales. Des membres exercent les charges de mayeurs et d'officiers seigneuriaux dans le Hainaut.</p>
-        </div>
-      </div>
-
-      <div class="tl-era-marker reveal" style="margin-top:1rem">
-        <span class="tl-era-text">Expansion · XV<sup>e</sup>–XVI<sup>e</sup> siècles</span>
-      </div>
-
-      <div class="timeline-item left reveal">
-        <div class="tl-content">
-          <h4>Établissement en Boulonnais</h4>
-          <p>La branche principale étend son influence vers le comté de Boulogne, nouant des alliances avec les familles nobles de la côte et diversifiant ses possessions.</p>
-        </div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">c. 1450</span>
-        </div>
-        <div class="tl-empty"></div>
-      </div>
-
-      <div class="timeline-item right reveal">
-        <div class="tl-empty"></div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">c. 1520</span>
-        </div>
-        <div class="tl-content">
-          <h4>Fonctions militaires</h4>
-          <p>Des membres de la Maison accèdent à des charges de capitaines et d'officiers militaires, témoignant de l'intégration de la famille dans les réseaux de service armé de la couronne.</p>
-        </div>
-      </div>
-
-      <div class="tl-era-marker reveal" style="margin-top:1rem">
-        <span class="tl-era-text">Patrimoine &amp; Continuité · XVII<sup>e</sup>–XVIII<sup>e</sup> siècles</span>
-      </div>
-
-      <div class="timeline-item left reveal">
-        <div class="tl-content">
-          <h4>Château d'Ordre</h4>
-          <p>La propriété du château d'Ordre est liée à la famille au cours de cette période. Le domaine connaît des extensions architecturales significatives, enrichissant le patrimoine bâti de la lignée.</p>
-        </div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">XVII<sup>e</sup> s.</span>
-        </div>
-        <div class="tl-empty"></div>
-      </div>
-
-      <div class="timeline-item right reveal">
-        <div class="tl-empty"></div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">1720–1780</span>
-        </div>
-        <div class="tl-content">
-          <h4>Gestion des eaux et forêts</h4>
-          <p>Des membres de la Maison exercent la charge de maîtres des eaux et forêts, administration régionale importante qui confirme leur position dans la noblesse de service.</p>
-        </div>
-      </div>
-
-      <div class="tl-era-marker reveal" style="margin-top:1rem">
-        <span class="tl-era-text">Époque Contemporaine · XIX<sup>e</sup>–XXI<sup>e</sup> siècles</span>
-      </div>
-
-      <div class="timeline-item left reveal">
-        <div class="tl-content">
-          <h4>Dispersion des branches</h4>
-          <p>La Révolution française bouleverse l'ordre nobiliaire. Les branches familiales se dispersent, certaines s'établissant hors du territoire d'origine, tout en maintenant la conscience de leur appartenance à la lignée.</p>
-        </div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">ap. 1789</span>
-        </div>
-        <div class="tl-empty"></div>
-      </div>
-
-      <div class="timeline-item right reveal">
-        <div class="tl-empty"></div>
-        <div class="tl-center">
-          <div class="tl-dot"></div>
-          <span class="tl-year">2020–</span>
-        </div>
-        <div class="tl-content">
-          <h4>Projet de mémoire familiale</h4>
-          <p>Lancement d'un projet de préservation mémorielle et généalogique, visant à rassembler les sources, constituer des archives numériques et reconnecter les branches cousines dispersées.</p>
-        </div>
+    <div class="coming-soon-block reveal">
+      <div class="csb-inner">
+        <svg viewBox="0 0 40 40" width="36" fill="none" style="margin-bottom:1.5rem; opacity:0.35">
+          <rect x="1" y="1" width="38" height="38" stroke="#c9a84c" stroke-width="0.8" transform="rotate(45 20 20)" fill="none"/>
+        </svg>
+        <p class="csb-label">En cours de constitution</p>
+        <p class="csb-text">La chronologie interactive de la Maison du Wicquet est en cours de rédaction et de vérification des sources. Elle sera publiée prochainement.</p>
       </div>
     </div>
   </div>
@@ -1397,130 +1341,14 @@ footer {
         <div class="rule-diamond"></div>
         <div class="rule-line"></div>
       </div>
-      <p class="section-lead">
-        Incarnation architecturale du prestige familial, le château d'Ordre constitue
-        l'un des témoins matériels les plus éloquents de l'histoire de la Maison du Wicquet.
-      </p>
     </header>
-
-    <div class="chateau-layout">
-      <div class="chateau-image-frame reveal">
-        <svg class="chateau-svg-illustration" viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Sky gradient -->
-          <rect width="600" height="360" fill="#0a1208"/>
-          <!-- Stars -->
-          <circle cx="50" cy="30" r="0.8" fill="#c9a84c" opacity="0.4"/>
-          <circle cx="120" cy="15" r="0.6" fill="#c9a84c" opacity="0.3"/>
-          <circle cx="200" cy="25" r="0.7" fill="#c9a84c" opacity="0.35"/>
-          <circle cx="320" cy="10" r="0.5" fill="#c9a84c" opacity="0.25"/>
-          <circle cx="420" cy="20" r="0.8" fill="#c9a84c" opacity="0.4"/>
-          <circle cx="530" cy="8" r="0.6" fill="#c9a84c" opacity="0.3"/>
-          <circle cx="480" cy="35" r="0.5" fill="#c9a84c" opacity="0.2"/>
-          <circle cx="75" cy="55" r="0.4" fill="#c9a84c" opacity="0.25"/>
-          <!-- Moon -->
-          <circle cx="520" cy="45" r="18" fill="#1a2a10" opacity="0.6"/>
-          <circle cx="526" cy="41" r="15" fill="#c9a84c" opacity="0.08"/>
-          <!-- Ground -->
-          <rect x="0" y="300" width="600" height="60" fill="#0d1a0a"/>
-          <!-- Trees left -->
-          <rect x="10" y="200" width="8" height="100" fill="#0f1e0c"/>
-          <ellipse cx="14" cy="185" rx="22" ry="45" fill="#0d1a0a"/>
-          <rect x="30" y="215" width="7" height="85" fill="#0f1e0c"/>
-          <ellipse cx="33" cy="200" rx="18" ry="38" fill="#111f0d"/>
-          <!-- Trees right -->
-          <rect x="560" y="195" width="8" height="105" fill="#0f1e0c"/>
-          <ellipse cx="564" cy="178" rx="24" ry="48" fill="#0d1a0a"/>
-          <rect x="578" y="210" width="7" height="90" fill="#0f1e0c"/>
-          <ellipse cx="581" cy="193" rx="18" ry="38" fill="#111f0d"/>
-          <!-- Main castle structure -->
-          <!-- Central building -->
-          <rect x="180" y="150" width="240" height="150" fill="#121e0f" stroke="#1e3018" stroke-width="0.5"/>
-          <!-- Roof -->
-          <polygon points="180,150 300,90 420,150" fill="#0e1a0b"/>
-          <polygon points="180,150 300,95 420,150" fill="#0a1208" opacity="0.5"/>
-          <!-- Left tower -->
-          <rect x="140" y="130" width="60" height="170" fill="#0f1a0c" stroke="#1e3018" stroke-width="0.5"/>
-          <polygon points="140,130 170,85 200,130" fill="#0c1709"/>
-          <!-- Right tower -->
-          <rect x="400" y="130" width="60" height="170" fill="#0f1a0c" stroke="#1e3018" stroke-width="0.5"/>
-          <polygon points="400,130 430,85 460,130" fill="#0c1709"/>
-          <!-- Small turrets -->
-          <rect x="125" y="145" width="20" height="60" fill="#0d180a" stroke="#1a2d14" stroke-width="0.5"/>
-          <polygon points="125,145 135,118 145,145" fill="#0a1408"/>
-          <rect x="455" y="145" width="20" height="60" fill="#0d180a" stroke="#1a2d14" stroke-width="0.5"/>
-          <polygon points="455,145 465,118 475,145" fill="#0a1408"/>
-          <!-- Windows lit - central -->
-          <rect x="240" y="180" width="28" height="38" rx="14" fill="#c9a84c" opacity="0.12"/>
-          <rect x="240" y="180" width="28" height="38" rx="14" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
-          <rect x="290" y="180" width="28" height="38" rx="14" fill="#c9a84c" opacity="0.08"/>
-          <rect x="290" y="180" width="28" height="38" rx="14" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.3"/>
-          <rect x="340" y="180" width="28" height="38" rx="14" fill="#c9a84c" opacity="0.14"/>
-          <rect x="340" y="180" width="28" height="38" rx="14" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
-          <!-- Windows - upper -->
-          <rect x="265" y="120" width="24" height="24" rx="12" fill="#c9a84c" opacity="0.18"/>
-          <rect x="265" y="120" width="24" height="24" rx="12" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
-          <!-- Tower windows -->
-          <rect x="156" y="165" width="20" height="28" rx="10" fill="#c9a84c" opacity="0.1"/>
-          <rect x="156" y="165" width="20" height="28" rx="10" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-          <rect x="417" y="165" width="20" height="28" rx="10" fill="#c9a84c" opacity="0.15"/>
-          <rect x="417" y="165" width="20" height="28" rx="10" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
-          <!-- Door -->
-          <rect x="274" y="240" width="52" height="60" rx="26" fill="#080e06"/>
-          <rect x="274" y="240" width="52" height="60" rx="26" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
-          <!-- Steps -->
-          <rect x="264" y="295" width="72" height="5" fill="#0e1a0b"/>
-          <rect x="269" y="300" width="62" height="5" fill="#0c1708"/>
-          <!-- Battlements left tower -->
-          <rect x="140" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="151" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="162" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="173" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="184" y="122" width="8" height="12" fill="#0c1709"/>
-          <!-- Battlements right tower -->
-          <rect x="400" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="411" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="422" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="433" y="122" width="8" height="12" fill="#0c1709"/>
-          <rect x="444" y="122" width="8" height="12" fill="#0c1709"/>
-          <!-- Moat / water reflection -->
-          <ellipse cx="300" cy="330" rx="200" ry="12" fill="#0a1208" opacity="0.8"/>
-          <path d="M100 325 Q200 318 300 322 Q400 318 500 325" stroke="#c9a84c" stroke-width="0.4" fill="none" opacity="0.15"/>
-          <!-- Reflection of windows in water -->
-          <rect x="242" y="330" width="12" height="8" rx="4" fill="#c9a84c" opacity="0.04"/>
-          <rect x="295" y="332" width="10" height="7" rx="3" fill="#c9a84c" opacity="0.03"/>
-          <rect x="344" y="330" width="12" height="8" rx="4" fill="#c9a84c" opacity="0.04"/>
-          <!-- Alley of elms - simplified -->
-          <rect x="270" y="298" width="4" height="8" fill="#0c1408"/>
-          <rect x="324" y="298" width="4" height="8" fill="#0c1408"/>
-          <!-- Border decoration -->
-          <rect x="1" y="1" width="598" height="358" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
-          <rect x="6" y="6" width="588" height="348" fill="none" stroke="#c9a84c" stroke-width="0.3" opacity="0.12"/>
-          <!-- Title text -->
-          <text x="300" y="352" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#c9a84c" letter-spacing="5" opacity="0.5">CHÂTEAU D'ORDRE</text>
+    <div class="coming-soon-block reveal">
+      <div class="csb-inner">
+        <svg viewBox="0 0 40 40" width="36" fill="none" style="margin-bottom:1.5rem; opacity:0.35">
+          <rect x="1" y="1" width="38" height="38" stroke="#c9a84c" stroke-width="0.8" transform="rotate(45 20 20)" fill="none"/>
         </svg>
-        <p class="chateau-caption">Château d'Ordre — Illustration d'après les sources documentaires disponibles</p>
-      </div>
-
-      <div class="chateau-details reveal reveal-delay-2">
-        <h3>Un Domaine Historique</h3>
-        <p>
-          Le château d'Ordre constitue l'une des pièces maîtresses du patrimoine lié à la
-          Maison du Wicquet. Sa silhouette, ses tours, ses communs et ses allées d'ormes
-          dessinent un tableau caractéristique de l'architecture seigneuriale du nord de la France.
-        </p>
-        <p>
-          Les travaux successifs réalisés au fil des siècles témoignent d'une présence durable
-          et d'investissements constants, signes d'une famille attachée à son cadre de vie et
-          à la transmission de ce patrimoine aux générations suivantes.
-        </p>
-        <ul class="chateau-features">
-          <li><span class="cf-icon">◆</span><span>Architecture seigneuriale caractéristique du nord de la France</span></li>
-          <li><span class="cf-icon">◆</span><span>Boiseries et cheminées d'époque, témoins de l'art décoratif intérieur</span></li>
-          <li><span class="cf-icon">◆</span><span>Allées d'ormes et parc paysager ancien</span></li>
-          <li><span class="cf-icon">◆</span><span>Salons de réception aux décors historiques préservés</span></li>
-          <li><span class="cf-icon">◆</span><span>Protections patrimoniales sur certains éléments architecturaux</span></li>
-          <li><span class="cf-icon">◆</span><span>Mobilier historique dont la dispersion est documentée et étudiée</span></li>
-        </ul>
+        <p class="csb-label">En cours de constitution</p>
+        <p class="csb-text">La page consacrée au Château d'Ordre, ses archives photographiques et sa documentation architecturale sont en cours de préparation.</p>
       </div>
     </div>
   </div>
@@ -1540,85 +1368,15 @@ footer {
         <div class="rule-diamond"></div>
         <div class="rule-line"></div>
       </div>
-      <p class="section-lead">
-        Le blason de la Maison du Wicquet est un résumé symbolique de son identité :
-        chaque pièce, chaque émail porte une signification qui traverse les siècles.
-      </p>
     </header>
-
-    <div class="heraldique-grid reveal">
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="5" y="5" width="50" height="50" fill="rgba(26,82,31,0.35)" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
-            <rect x="10" y="10" width="40" height="40" fill="rgba(26,82,31,0.2)" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
-          </svg>
-        </div>
-        <p class="her-label">Sinople</p>
-        <p class="her-desc">Fond de l'écu en vert héraldique, couleur de la loyauté, des terres boisées et de l'espérance.</p>
-        <span class="her-tincture">Émail · Vert</span>
+    <div class="coming-soon-block reveal">
+      <div class="csb-inner">
+        <svg viewBox="0 0 40 40" width="36" fill="none" style="margin-bottom:1.5rem; opacity:0.35">
+          <rect x="1" y="1" width="38" height="38" stroke="#c9a84c" stroke-width="0.8" transform="rotate(45 20 20)" fill="none"/>
+        </svg>
+        <p class="csb-label">En cours de constitution</p>
+        <p class="csb-text">L'étude héraldique complète — blasonnement, analyse des pièces, variantes connues et sources — est en cours de rédaction.</p>
       </div>
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 40 L30 12 L55 40" stroke="#c9a84c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="her-label">Chevron</p>
-        <p class="her-desc">Pièce honorable symbolisant la protection accordée, l'honneur conquis et la maison bâtie par ses aïeux.</p>
-        <span class="her-tincture">Métal · Argent</span>
-      </div>
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="18" width="24" height="24" stroke="#c9a84c" stroke-width="1.5" fill="none" transform="rotate(45 30 30)"/>
-            <circle cx="30" cy="30" r="6" stroke="#c9a84c" stroke-width="1" fill="none"/>
-          </svg>
-        </div>
-        <p class="her-label">Rustres</p>
-        <p class="her-desc">Losanges percés d'un rond, marque rare et ancienne attestant une noblesse établie de longue date.</p>
-        <span class="her-tincture">Métal · Argent · × 3</span>
-      </div>
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="30" y="42" text-anchor="middle" font-family="Cinzel" font-size="26" fill="#c9a84c" opacity="0.7">T</text>
-          </svg>
-        </div>
-        <p class="her-label">Devise</p>
-        <p class="her-desc">« Toujours Loyal » : fidélité envers le suzerain, la parole donnée et la tradition familiale.</p>
-        <span class="her-tincture">Devise · Langue Française</span>
-      </div>
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 5 L5 20 L5 40 C5 52 16 58 30 58 C44 58 55 52 55 40 L55 20 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(26,58,31,0.25)"/>
-            <path d="M30 5 L30 58" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
-          </svg>
-        </div>
-        <p class="her-label">Écu</p>
-        <p class="her-desc">Forme classique de l'écu français, signe de la noblesse d'épée, porté depuis les premiers temps de la lignée.</p>
-        <span class="her-tincture">Écu · Français</span>
-      </div>
-      <div class="heraldique-panel">
-        <div class="her-icon">
-          <svg viewBox="0 0 60 60" width="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="30" y="38" text-anchor="middle" font-family="Cinzel" font-size="12" fill="#c9a84c" opacity="0.6" letter-spacing="1">MACHI</text>
-            <text x="30" y="52" text-anchor="middle" font-family="Cinzel" font-size="12" fill="#c9a84c" opacity="0.6" letter-spacing="1">COURT</text>
-          </svg>
-        </div>
-        <p class="her-label">Cri de Guerre</p>
-        <p class="her-desc">« Machicourt » : cri d'appel à la bataille et ralliment des vassaux, ancré dans la géographie seigneuriale.</p>
-        <span class="her-tincture">Cri · Héraldique</span>
-      </div>
-    </div>
-
-    <div class="blazon-description reveal" style="margin-top:4rem">
-      <span class="blazon-label">Blasonnement officiel</span>
-      <p class="blazon-text">
-        De sinople au chevron d'argent accompagné en chef de deux rustres du même
-        et en pointe d'un troisième de même.
-      </p>
     </div>
   </div>
 </section>
@@ -1776,78 +1534,14 @@ footer {
         <div class="rule-diamond"></div>
         <div class="rule-line"></div>
       </div>
-      <p class="section-lead">
-        Fragments de mémoire, actes notariés, sceaux et représentations héraldiques :
-        les traces matérielles de sept siècles d'histoire familiale.
-      </p>
     </header>
-
-    <div class="galerie-grid reveal">
-      <div class="galerie-item large">
-        <div class="galerie-placeholder" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem">
-          <svg viewBox="0 0 80 80" width="60" fill="none">
-            <rect x="10" y="10" width="60" height="60" stroke="#2e5233" stroke-width="1" fill="none"/>
-            <path d="M20 25 L60 25 M20 35 L60 35 M20 45 L55 45 M20 55 L50 55" stroke="#2e5233" stroke-width="0.8" opacity="0.6"/>
-            <rect x="5" y="5" width="70" height="70" stroke="#1a3a1f" stroke-width="0.5" fill="none" opacity="0.4"/>
-          </svg>
-          <span>Acte notarial — XIVe siècle</span>
-        </div>
-        <div class="galerie-overlay">
-          <p class="galerie-overlay-title">Acte Seigneurial</p>
-          <p class="galerie-overlay-sub">Document de concession de terres, Hainaut, c. 1340</p>
-        </div>
-      </div>
-      <div class="galerie-item">
-        <div class="galerie-placeholder">
-          <svg viewBox="0 0 60 60" width="50" fill="none">
-            <circle cx="30" cy="30" r="24" stroke="#2e5233" stroke-width="1" fill="none"/>
-            <circle cx="30" cy="30" r="18" stroke="#1a3a1f" stroke-width="0.6" fill="none" opacity="0.5"/>
-            <path d="M30 10 L30 50 M10 30 L50 30" stroke="#2e5233" stroke-width="0.5" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="galerie-overlay">
-          <p class="galerie-overlay-title">Sceau Pendant</p>
-          <p class="galerie-overlay-sub">Matrice du XVe siècle</p>
-        </div>
-      </div>
-      <div class="galerie-item">
-        <div class="galerie-placeholder">
-          <svg viewBox="0 0 60 60" width="50" fill="none">
-            <path d="M30 5 L5 20 L5 45 C5 54 17 58 30 58 C43 58 55 54 55 45 L55 20 Z" stroke="#2e5233" stroke-width="1" fill="rgba(26,58,31,0.15)"/>
-            <path d="M20 35 L30 20 L40 35" stroke="#c9a84c" stroke-width="1.2" fill="none" opacity="0.5"/>
-          </svg>
-        </div>
-        <div class="galerie-overlay">
-          <p class="galerie-overlay-title">Armorial Manuscrit</p>
-          <p class="galerie-overlay-sub">Blason peint, XVIe siècle</p>
-        </div>
-      </div>
-      <div class="galerie-item">
-        <div class="galerie-placeholder">
-          <svg viewBox="0 0 60 60" width="50" fill="none">
-            <rect x="10" y="8" width="40" height="50" stroke="#2e5233" stroke-width="1" fill="none"/>
-            <path d="M15 18 L45 18 M15 25 L45 25 M15 32 L40 32 M15 39 L38 39 M15 46 L35 46" stroke="#2e5233" stroke-width="0.7" opacity="0.5"/>
-            <path d="M35 8 L50 8 L50 23 L35 8" stroke="#2e5233" stroke-width="0.7" fill="rgba(13,31,16,0.5)"/>
-          </svg>
-        </div>
-        <div class="galerie-overlay">
-          <p class="galerie-overlay-title">Registre Paroissial</p>
-          <p class="galerie-overlay-sub">Baptêmes, XVIIe siècle</p>
-        </div>
-      </div>
-      <div class="galerie-item">
-        <div class="galerie-placeholder">
-          <svg viewBox="0 0 60 60" width="50" fill="none">
-            <rect x="8" y="8" width="44" height="44" stroke="#2e5233" stroke-width="1" fill="none"/>
-            <rect x="14" y="14" width="32" height="32" stroke="#1a3a1f" stroke-width="0.5" fill="none" opacity="0.5"/>
-            <circle cx="30" cy="30" r="8" stroke="#2e5233" stroke-width="0.8" fill="none"/>
-            <path d="M14 14 L46 46 M46 14 L14 46" stroke="#1a3a1f" stroke-width="0.4" opacity="0.3"/>
-          </svg>
-        </div>
-        <div class="galerie-overlay">
-          <p class="galerie-overlay-title">Plan Cadastral</p>
-          <p class="galerie-overlay-sub">Domaine d'Ordre, XVIIIe siècle</p>
-        </div>
+    <div class="coming-soon-block reveal">
+      <div class="csb-inner">
+        <svg viewBox="0 0 40 40" width="36" fill="none" style="margin-bottom:1.5rem; opacity:0.35">
+          <rect x="1" y="1" width="38" height="38" stroke="#c9a84c" stroke-width="0.8" transform="rotate(45 20 20)" fill="none"/>
+        </svg>
+        <p class="csb-label">En cours de constitution</p>
+        <p class="csb-text">La galerie d'archives — actes, sceaux, armoriaux, registres paroissiaux — est en cours de numérisation et d'indexation. Les documents seront publiés au fil de leur vérification.</p>
       </div>
     </div>
   </div>
