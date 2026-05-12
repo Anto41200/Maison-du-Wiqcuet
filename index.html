@@ -1856,107 +1856,8 @@ footer {
 ════════════════════════════════════════ -->
 <script>
 /* ─── DATA ─── */
-const ANCETRES_DATA = [
-  {
-    name: "Hugues du Wicquet",
-    era: "c. 1255 – c. 1310",
-    role: "Seigneur du Wicquet",
-    category: "administratif",
-    desc: "Premier membre documenté de la Maison, cité en 1281 dans des actes relatifs aux terres du Hainaut. Son nom donne à la lignée son identité dynastique.",
-    badge: "Fondateur attesté"
-  },
-  {
-    name: "Raoul du Wicquet",
-    era: "c. 1290 – c. 1360",
-    role: "Mayeur, officier seigneurial",
-    category: "administratif",
-    desc: "Exerce des charges administratives locales dans le Hainaut. Contribue à l'ancrage de la famille dans les structures de gouvernement territorial.",
-    badge: "Administration"
-  },
-  {
-    name: "Guillaume du Wicquet",
-    era: "c. 1350 – c. 1420",
-    role: "Capitaine",
-    category: "militaire",
-    desc: "Membre de la branche militaire de la Maison, dont le service armé est attesté dans les sources du XVe siècle. Représentant d'une tradition chevaleresque.",
-    badge: "Service militaire"
-  },
-  {
-    name: "Jehan du Wicquet",
-    era: "c. 1400 – c. 1470",
-    role: "Maître des eaux et forêts",
-    category: "administratif",
-    desc: "Exerce la charge de maître des eaux et forêts, administration royale importante impliquant la gestion et la juridiction sur les forêts seigneuriales.",
-    badge: "Eaux & Forêts"
-  },
-  {
-    name: "Philippes du Wicquet",
-    era: "c. 1460 – c. 1530",
-    role: "Écuyer, seigneur du Boulonnais",
-    category: "militaire",
-    desc: "Transition de la famille vers le Boulonnais. Écuyer attesté, il scelle l'établissement de la branche principale dans ce nouveau territoire.",
-    badge: "Boulonnais"
-  },
-  {
-    name: "Antoine du Wicquet",
-    era: "c. 1510 – c. 1580",
-    role: "Officier royal",
-    category: "militaire",
-    desc: "Sert comme officier royal dans la région, témoignant de l'intégration de la Maison dans les réseaux de service de la couronne française.",
-    badge: "Officier royal"
-  },
-  {
-    name: "Charles du Wicquet",
-    era: "c. 1570 – c. 1640",
-    role: "Seigneur d'Ordre",
-    category: "administratif",
-    desc: "Associé au domaine d'Ordre, il représente la génération qui consolide le patrimoine bâti de la Maison et investit dans l'architecture seigneuriale.",
-    badge: "Seigneur d'Ordre"
-  },
-  {
-    name: "François du Wicquet",
-    era: "c. 1620 – c. 1690",
-    role: "Écuyer, conseiller",
-    category: "judiciaire",
-    desc: "Exerce des fonctions de conseil auprès des juridictions locales. Sa carrière illustre la diversification des fonctions exercées par la noblesse de service.",
-    badge: "Justice locale"
-  },
-  {
-    name: "Ignace du Wicquet",
-    era: "c. 1680 – c. 1750",
-    role: "Officier de justice",
-    category: "judiciaire",
-    desc: "Représentant de la Maison auprès des institutions judiciaires du Boulonnais. Contribue au maintien des droits et prérogatives de la famille.",
-    badge: "Magistrature"
-  },
-  {
-    name: "Père Joseph du Wicquet",
-    era: "c. 1700 – c. 1765",
-    role: "Chanoine, ecclésiastique",
-    category: "ecclesiastique",
-    desc: "Entrée d'un membre de la lignée dans les ordres sacrés, témoignant de la diversité des vocations au sein d'une famille noble de cette époque.",
-    badge: "Clergé séculier"
-  },
-  {
-    name: "Louis-Antoine du Wicquet",
-    era: "c. 1740 – ap. 1800",
-    role: "Dernier seigneur documenté",
-    category: "administratif",
-    desc: "Représente la Maison à la veille de la Révolution française. Son destin illustre les bouleversements que connut l'ensemble de la noblesse française après 1789.",
-    badge: "Époque révolutionnaire"
-  },
-  {
-    name: "Hyacinthe du Wicquet",
-    era: "c. 1780 – c. 1850",
-    role: "Premier bourgeois de la Maison",
-    category: "administratif",
-    desc: "Adapte le nom et la tradition familiale au nouveau contexte post-révolutionnaire, assurant la continuité de la lignée dans une France profondément transformée.",
-    badge: "Continuité XIXe s."
-  }
-];
 
 const SEARCH_DATA = [
-  ...ANCETRES_DATA.map(a => ({ type: 'Ancêtre', name: a.name, context: a.role + ' · ' + a.era, tags: (a.name + ' ' + a.role + ' ' + a.desc + ' ' + a.era).toLowerCase() })),
   { type: 'Lieu', name: 'Château d\'Ordre', context: 'Domaine seigneurial, Boulonnais', tags: 'château ordre boulonnais domaine architecture' },
   { type: 'Lieu', name: 'Hainaut', context: 'Territoire d\'origine de la Maison', tags: 'hainaut hainault origine médiéval territoire' },
   { type: 'Lieu', name: 'Machicourt', context: 'Lieu-dit, cri de guerre héraldique', tags: 'machicourt cri guerre héraldique lieu' },
@@ -1964,28 +1865,6 @@ const SEARCH_DATA = [
   { type: 'Devise', name: 'Toujours Loyal', context: 'Devise de la Maison du Wicquet', tags: 'devise loyal loyauté fidélité toujours' },
   { type: 'Document', name: 'Acte de 1281', context: 'Première mention de Hugues du Wicquet', tags: '1281 acte hugues première mention document archive' },
 ];
-
-/* ─── ANCÊTRES RENDER ─── */
-function renderAncetres(filter = 'all') {
-  const grid = document.getElementById('ancetres-grid');
-  const items = filter === 'all' ? ANCETRES_DATA : ANCETRES_DATA.filter(a => a.category === filter);
-  grid.innerHTML = items.map(a => `
-    <div class="ancetre-card">
-      <span class="ancetre-era">${a.era}</span>
-      <p class="ancetre-name">${a.name}</p>
-      <p class="ancetre-title-role">${a.role}</p>
-      <p class="ancetre-desc">${a.desc}</p>
-      <span class="ancetre-badge">${a.badge}</span>
-    </div>
-  `).join('');
-}
-renderAncetres();
-
-function filterAncetres(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderAncetres(cat);
-}
 
 /* ─── SEARCH ─── */
 function handleSearch(q) {
